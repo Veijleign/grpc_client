@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package com.example.pokemon;
+
+option java_multiple_files = true;
+option java_package = "com.example.pokemon";
+
+service PokemonService {
+
+  rpc getOne(GetPokemonRequest) returns (PokemonResponse) {
+  }
+
+  rpc getAll(Empty) returns (PokemonResponses) {
+  }
+
+  rpc create(CreatePokemonRequest) returns (PokemonResponse) {
+  }
+
+  rpc update(UpdatePokemonRequest) returns (PokemonResponse) {
+  }
+
+  rpc delete(GetPokemonRequest) returns (Empty) {
+  }
+
+  rpc greeting(HelloRequest) returns (HelloResponse) {
+  }
+
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}
+
+message GetPokemonRequest {
+  int64 id = 1;
+}
+
+message CreatePokemonRequest {
+  string name = 1;
+  bool isActive = 2;
+}
+
+message UpdatePokemonRequest {
+  int64 id = 1;
+  string name = 2;
+  bool isActive = 3;
+}
+
+message PokemonResponse {
+  int64 id = 1;
+  string name = 2;
+  bool isActive = 3;
+}
+
+message Empty {
+
+}
+
+message PokemonResponses {
+  repeated PokemonResponse response = 1;
+}
